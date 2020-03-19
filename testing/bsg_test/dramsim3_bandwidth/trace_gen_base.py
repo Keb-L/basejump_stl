@@ -31,6 +31,18 @@ class TraceGenBase:
     self.curr_data += 1
     print(trace)
 
+  def wait(self, num_cycles):
+    trace = "0110_0_"
+    trace += self.get_bin_str(0, self.addr_width_p)
+    trace += "_"
+    trace += self.get_bin_str(num_cycles, self.data_width_p)
+    print(trace)  
+    trace = "0101_0_"
+    trace += self.get_bin_str(0, self.addr_width_p)
+    trace += "_"
+    trace += self.get_bin_str(0, self.data_width_p)
+    print(trace)  
+
   # send done
   def done(self):
     trace = "0011_0_"

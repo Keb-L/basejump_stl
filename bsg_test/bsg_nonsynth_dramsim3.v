@@ -218,12 +218,23 @@ module bsg_nonsynth_dramsim3
       ,.data_o(data_o[i])
     );
 
-    assign read_v_li[i] = read_done[i];
-    assign read_addr_li[i] = read_done_ch_addr[i];
+    //assign read_v_li[i] = read_done[i];
+    //assign read_addr_li[i] = read_done_ch_addr[i];
   
-    assign write_v_li[i] = data_v_i[i] & v_i[i] & write_not_read_i[i] & yumi_o[i];
-    assign data_yumi_o[i] = v_i[i] & write_not_read_i[i] & yumi_o[i];
+    //assign write_v_li[i] = data_v_i[i] & v_i[i] & write_not_read_i[i] & yumi_o[i];
+    //assign data_yumi_o[i] = v_i[i] & write_not_read_i[i] & yumi_o[i];
   
+  end
+
+  always @ (*) begin
+    for (integer i = 0; i < num_channels_p; i++) begin
+      read_v_li[i] = read_done[i];
+      read_addr_li[i] = read_done_ch_addr[i];
+  
+      write_v_li[i] = data_v_i[i] & v_i[i] & write_not_read_i[i] & yumi_o[i];
+      data_yumi_o[i] = v_i[i] & write_not_read_i[i] & yumi_o[i];
+    end
+
   end
 
   // this register is needed because we use blocking assignment 

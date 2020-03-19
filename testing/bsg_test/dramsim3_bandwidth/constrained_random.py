@@ -4,6 +4,7 @@ import random
 class ConstrainedRandom(TraceGenBase):
 
   def generate(self):
+    random.seed(0)
 
     addrs = []
 
