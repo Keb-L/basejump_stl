@@ -52,8 +52,9 @@ module bsg_mem_1rw_sync_mask_write_byte #(parameter els_p = -1
    
 
   // TODO: ADD ANY NEW RAM CONFIGURATIONS HERE
-  `bsg_mem_1rw_sync_mask_write_byte_macro (64, 512) else
-  
+  `bsg_mem_1rw_sync_mask_write_byte_macro (64, 512) else  // 8-way associative, (64x8)  512 addresses, 64 bits
+                                                          // 4-way associative, (128x4) 512 addresses, 64 bits
+                                                          // 2-way associative, (256x2) 512 addresses, 64 bits
   // no hardened version found
     begin: notmacro
 

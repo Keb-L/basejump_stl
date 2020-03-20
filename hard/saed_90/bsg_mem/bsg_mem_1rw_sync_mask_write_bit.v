@@ -71,11 +71,20 @@ module bsg_mem_1rw_sync_mask_write_bit #(parameter width_p=-1
   // TODO: ADD ANY NEW RAM CONFIGURATIONS HERE
   `bsg_mem_1rw_sync_mask_write_bit_macro (736, 64) else
   `bsg_mem_1rw_sync_mask_write_bit_macro ( 96, 64) else
-  `bsg_mem_1rw_sync_mask_write_bit_macro ( 248, 64) else
-  `bsg_mem_1rw_sync_mask_write_bit_convert_macro (124,128,4,64) else
-  `bsg_mem_1rw_sync_mask_write_bit_convert_macro (7,8,1,64) else
-  `bsg_mem_1rw_sync_mask_write_bit_convert_macro (15,16,1,64) else
 
+  `bsg_mem_1rw_sync_mask_write_bit_macro ( 248, 64) else  // d-cache tag_mem 8-way associative, (31 * 8) = 248, 64 sets
+  `bsg_mem_1rw_sync_mask_write_bit_macro ( 124, 128) else  // d-cache tag_mem 4-way associative, (31 * 4) = 124, 128 sets
+  `bsg_mem_1rw_sync_mask_write_bit_macro (  62, 256) else  // d-cache tag_mem 2-way associative, (31 * 2) = 62, 256 sets
+
+  `bsg_mem_1rw_sync_mask_write_bit_convert_macro (124,128,4,64) else
+  
+  `bsg_mem_1rw_sync_mask_write_bit_convert_macro (7,8,1,64) else  // i-cache stat_mem 8 way
+  `bsg_mem_1rw_sync_mask_write_bit_convert_macro (3,4,1,128) else  // i-cache stat_mem 4 way
+  `bsg_mem_1rw_sync_mask_write_bit_convert_macro (1,2,1,256) else  // i-cache stat_mem 2 way
+
+  `bsg_mem_1rw_sync_mask_write_bit_convert_macro (15,16,1,64) else  // d-cache stat-mem (2*8-1) = 15, 64 sets
+  `bsg_mem_1rw_sync_mask_write_bit_convert_macro (7,8,1,128) else  // d-cache stat-mem (2*4-1) = 7, 128 sets
+  `bsg_mem_1rw_sync_mask_write_bit_convert_macro (3,4,1,256) else  // d-cache stat-mem (2*2-1) = 3, 256 sets
 
   // no hardened version found
     begin: notmacro
